@@ -1,0 +1,50 @@
+{
+    "name": "mern-testing-server",
+    "version": "1.0.0",
+    "description": "MERN Stack Server with Comprehensive Testing",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "test": "jest --coverage --watchAll=false",
+        "test:watch": "jest --watch",
+        "test:unit": "jest --testPathPattern=unit --coverage --watchAll=false",
+        "test:integration": "jest --testPathPattern=integration --coverage --watchAll=false",
+        "setup-test-db": "node scripts/setup-test-db.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "mongoose": "^8.0.3",
+        "bcryptjs": "^2.4.3",
+        "jsonwebtoken": "^9.0.2",
+        "dotenv": "^16.3.1",
+        "cors": "^2.8.5",
+        "express-validator": "^7.0.1",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "supertest": "^6.3.3",
+        "nodemon": "^3.0.2",
+        "mongodb-memory-server": "^9.1.3"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "collectCoverageFrom": [
+            "src/**/*.js",
+            "!src/server.js",
+            "!src/config/**"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 70,
+                "functions": 70,
+                "lines": 70,
+                "statements": 70
+            }
+        },
+        "setupFilesAfterEnv": [
+            "<rootDir>/tests/setup.js"
+        ]
+    }
+}

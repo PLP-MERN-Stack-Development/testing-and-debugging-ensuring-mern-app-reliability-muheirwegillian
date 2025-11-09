@@ -1,0 +1,34 @@
+{
+    "name": "mern-testing",
+    "version": "1.0.0",
+    "description": "MERN Stack Application with Comprehensive Testing",
+    "main": "index.js",
+    "scripts": {
+        "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+        "test": "npm run test:unit && npm run test:integration",
+        "test:unit": "npm run test:unit:client && npm run test:unit:server",
+        "test:unit:client": "cd client && npm test -- --coverage --watchAll=false",
+        "test:unit:server": "cd server && npm test -- --coverage --watchAll=false",
+        "test:integration": "npm run test:integration:client && npm run test:integration:server",
+        "test:integration:client": "cd client && npm test -- --testPathPattern=integration --watchAll=false",
+        "test:integration:server": "cd server && npm test -- --testPathPattern=integration --watchAll=false",
+        "test:e2e": "cd client && npm run test:e2e",
+        "test:watch": "npm run test:watch:client & npm run test:watch:server",
+        "test:watch:client": "cd client && npm test",
+        "test:watch:server": "cd server && npm test",
+        "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+        "dev:server": "cd server && npm run dev",
+        "dev:client": "cd client && npm start"
+    },
+    "keywords": [
+        "mern",
+        "testing",
+        "jest",
+        "cypress"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
